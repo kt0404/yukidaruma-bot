@@ -46,7 +46,13 @@ client.on('message', message =>{
   if (message.author.id == client.user.id || message.author.bot){
     return;
   }
-  
+
+  // GitHub
+  if (message.content.match(/github|Github|GitHub/)){
+    sendMsg(message.channel.id, "https://github.com/kt0404/yukidaruma-bot");
+    return;
+  }
+
   // 占い
   if (message.content.match(/占って/)){
     let text = "旦那bot蹴ったのに、占ってほしいとか、自己中すぎませんか？";

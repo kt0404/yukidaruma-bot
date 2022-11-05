@@ -1,8 +1,8 @@
 'use strict';
 const Constants = require('./constants');
 
+// kuzu
 const MESSAGE_KUZU = [
-  'https://media.discordapp.net/attachments/995214973242454016/1002538239980208219/image0-1-1.jpg?width=530&height=676',
   'APEXから逃げるんですか？',
   'ゲーム誘うのやめてもらえますか？',
   'なんかよくサーバー抜けられますけど、どうしたんですか？ももさんと喧嘩したんですか？',
@@ -11,13 +11,19 @@ const MESSAGE_KUZU = [
   '今日もイキリチャットごくろうさまです。',
   'ゲームハラスメントやめてください。',
   'タルコフやるのと、ももさんと話するのどっちが緊張感ありますか？',
-  '神戸市中央区港島中町３－２－１',
-  //おもしろいことやれ！-
+  '神戸市中央区港島中町３－２－１'
+];
+
+const MESSAGE_KUZU_IMAGE = [
+  // ジミー大西
+  'https://media.discordapp.net/attachments/995214973242454016/1002538239980208219/image0-1-1.jpg?width=530&height=676',
+  // おもしろいことやれ！-
   'https://media.discordapp.net/attachments/836210211467034637/858058651293319236/S__17317891.jpg',
-  //ミスタービーン
+  // ミスタービーン
   'https://media.discordapp.net/attachments/803964190045634562/837678129299324948/84296333.jpeg'
 ];
 
+// ゆきだるまさん
 const MESSAGE_YUKIDARUMA = [
   '死にたいです',
   'discordでオンライン状態隠してごめんなさい:sob: :sob:',
@@ -27,11 +33,15 @@ const MESSAGE_YUKIDARUMA = [
   'Gpro買ったくせにゲームやらないんですか？',
   'くるしいくるしい',
   'ぼくとモンハンしてください:sob: :sob:',
-  'Komiflo契約しません？',
+  'Komiflo契約しません？'
+];
+
+const MESSAGE_YUKIDARUMA_IMAGE = [
   //旦那さんが描いた絵
   'https://media.discordapp.net/attachments/836210211467034637/858498853069127700/7.jpg'
 ];
 
+// ねこさん
 const MESSAGE_NEKOSUTEMI = [
   'ヤニカス、肺がん死、待ったなし',
   'いつまで部屋片づけてるんですか？能率どうなってるんですか？',
@@ -46,10 +56,14 @@ const MESSAGE_NEKOSUTEMI = [
   'Twitterとキャラ全然違くないですか？作ってますか？',
   'ろくに社会に出てこなかった為スーツが礼服しかないことに職場体験(？)1週間程前に気がつく。\n' +
     '買ったところで採用されずに自棄を起こして爆食いし、サイズが合わなくなったスーツが手元に残るビジョンが見える。\n' +
-    'それくらい社会に対して漠然とした不信感を抱いている、大体2万円のせいである。',
-    'https://media.discordapp.net/attachments/803964190045634562/846636308389953576/images.jpeg-5.jpg'
+    'それくらい社会に対して漠然とした不信感を抱いている、大体2万円のせいである。'
 ];
 
+const MESSAGE_NEKOSUTEMI_IMAGE = [
+  'https://media.discordapp.net/attachments/803964190045634562/846636308389953576/images.jpeg-5.jpg'
+];
+
+// メロンさん
 const MESSAGE_MELON = [
   'さいころ',
   '目をつむっててもSekiroクリアできる人がいるのに、何回死んだら満足するんですか？',
@@ -72,7 +86,10 @@ const MESSAGE_MELON = [
   '本当はプールでおしっこしてますよね？',
   'いつになったらセックスした報告聞かせてもらえるんですかね？',
   'ED',
-  'みのりん卒業おめでとう♪',
+  'みのりん卒業おめでとう♪'
+];
+
+const MESSAGE_MELON_IMAGE = [
   // 偽物の顔画像
   'https://media.discordapp.net/attachments/803964190045634562/851086069436121098/image0.jpg?width=312&height=675'
 ];
@@ -89,6 +106,9 @@ const MESSAGE_KURAHARA = [
   'ゲームしてるとき性格変わってませんか？'
 ];
 
+const MESSAGE_KURAHARA_IMAGE = [];
+
+// デビバさん
 const MESSAGE_DEVIBA = [
   'ぼくのこと陰キャって思ってますよね？',
   '今の彼氏とはいつ別れる予定なんですか？',
@@ -99,7 +119,10 @@ const MESSAGE_DEVIBA = [
   'FC2配信やめないでください。',
   'あのあなたもチー牛だって気づいてます？',
   'メロンさんにたかるのやめてもらっていいですか？',
-  '70kg',
+  '70kg'
+];
+
+const MESSAGE_DEVIBA_IMAGE = [
   //子供の顔かわるやつ
   'https://media.discordapp.net/attachments/836210211467034637/858306473079603220/image0.gif',
   //ママの口開けた画像
@@ -110,6 +133,7 @@ const MESSAGE_DEVIBA = [
   'https://media.discordapp.net/attachments/803964190045634562/805719176958050344/image0.jpg?width=455&height=676'
 ];
 
+// ももさん
 const MESSAGE_MOMO = [
   'どんだけ男好きなんですか？',
   '早くかずさんにお金返したほうがよくないですか？',
@@ -117,7 +141,10 @@ const MESSAGE_MOMO = [
   'ももさん絵すごくうまいですね',
   'なんで自撮りそんなのせるんですか？',
   '週何回かずさんと喧嘩してるんですか？',
-  '今日はジムいかないんすか？',
+  '今日はジムいかないんすか？'
+];
+
+const MESSAGE_MOMO_IMAGE = [
   //もか
   'https://media.discordapp.net/attachments/803964190045634562/841719648948060200/image0.jpg?width=507&height=676',
   //ももかが描いた絵
@@ -132,14 +159,17 @@ const MESSAGE_MOMO = [
 
 const MESSAGE_HITOMARU = [];
 
+// アル中さん
 const MESSAGE_ARUTYU = [
   'かんぱ～～～～い♪\n' + '<:TOZANG:855840334848065617> <:TOZANG:855840334848065617> <:TOZANG:855840334848065617> <:TOZANG:855840334848065617> <:TOZANG:855840334848065617> <:TOZANG:855840334848065617>',
   'アル中さん、お酒は控えたほうがいいですよ。',
-  'https://www.youtube.com/watch?v=mfkVaJmq2Gw',
   '入隊まで残り日♪',
   '大企業のICカード手に入れたからって、そこの従業員みたいなフリするのやめてもらえますか？',
   'アル中さんはサムソンの社員でもないし、SKハイニックスの社員でもないですよね？',
-  '軍隊でどれだけ矯正されるか楽しみです♪',
+  '軍隊でどれだけ矯正されるか楽しみです♪'
+];
+
+const MESSAGE_ARUTYU_IMAGE = [
   //顔
   'https://media.discordapp.net/attachments/836210211467034637/858130231888969738/image0-186.jpg?width=901&height=676',
   //コラ画像
@@ -159,7 +189,6 @@ const MESSAGE_DANNA_1 = [
   'ずっとdiscordにはりついているのに、discordの使い方全然知らないですよね。',
   'ぼくからサーバーの王とらないでください。',
   'http://vippers.jp/mp3/dotup.org2377419.mp3',
-  'https://media.discordapp.net/attachments/803964190045634562/857993456526163987/6D2FC20E-FCE7-4523-B774-5C63B42FBBE0.jpg?width=507&height=676'
 ];
 
 const MESSAGE_DANNA_2 = [
@@ -228,14 +257,21 @@ const MESSAGE_VOICE_CHANNEL_LEAVE = [
 
 module.exports = {
   MESSAGE_KUZU,
+  MESSAGE_KUZU_IMAGE,
   MESSAGE_YUKIDARUMA,
+  MESSAGE_YUKIDARUMA_IMAGE,
   MESSAGE_NEKOSUTEMI,
+  MESSAGE_NEKOSUTEMI_IMAGE,
   MESSAGE_MELON,
+  MESSAGE_MELON_IMAGE,
   MESSAGE_KURAHARA,
   MESSAGE_DEVIBA,
+  MESSAGE_DEVIBA_IMAGE,
   MESSAGE_MOMO,
+  MESSAGE_MOMO_IMAGE,
   //MESSAGE_HITOMARU,
   MESSAGE_ARUTYU,
+  MESSAGE_ARUTYU_IMAGE,
   MESSAGE_DANNA_1,
   MESSAGE_DANNA_2,
   MESSAGE_HAJIMEMASITE,

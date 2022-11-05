@@ -72,31 +72,67 @@ client.on('message', message =>{
   
   // ゆきだるまさん
   if(message.isMemberMentioned(client.user) || message.content.match(/ゆきだ|だるま/)){
-    let max = 10;
+    let imageFlag = Constants.IMAGE_ON;
+    let max = Messages.MESSAGE_YUKIDARUMA.length;
     let min = 1;
+
+    if (imageFlag === Constants.IMAGE_ON) {
+      max = Messages.MESSAGE_YUKIDARUMA.length + Messages.MESSAGE_YUKIDARUMA_IMAGE.length;
+      let text = [...Messages.MESSAGE_YUKIDARUMA];
+      for (let i = 0; i < Messages.MESSAGE_YUKIDARUMA_IMAGE.length; i++) {
+        text.push(Messages.MESSAGE_YUKIDARUMA_IMAGE[i]);
+      }
+      sendMsg(message.channel.id, Utils.decideMessage(max, min, text));
+      return;
+    }
+
     sendMsg(message.channel.id, Utils.decideMessage(max, min, Messages.MESSAGE_YUKIDARUMA));
     return;
   }
 
   // ももさん
   if (message.content.match(/もも|モモ/)){
-    let max = 12;
+    let imageFlag = Constants.IMAGE_OFF;
+    let max = Messages.MESSAGE_MOMO.length;
     let min = 1;
+
+    if (imageFlag === Constants.IMAGE_ON) {
+      max = Messages.MESSAGE_MOMO.length + Messages.MESSAGE_MOMO_IMAGE.length;
+      let text = [...Messages.MESSAGE_MOMO];
+      for (let i = 0; i < Messages.MESSAGE_MOMO_IMAGE.length; i++) {
+        text.push(Messages.MESSAGE_MOMO_IMAGE[i]);
+      }
+      sendMsg(message.channel.id, Utils.decideMessage(max, min, text));
+      return;
+    }
+
     sendMsg(message.channel.id, Utils.decideMessage(max, min, Messages.MESSAGE_MOMO));
     return;
   }
   
   // デビバさん
   if (message.content.match(/デビバ|でびば|えむこ/)){
-    let max = 14;
+    let imageFlag = Constants.IMAGE_ON;
+    let max = Messages.MESSAGE_DEVIBA.length;
     let min = 1;
+
+    if (imageFlag === Constants.IMAGE_ON) {
+      max = Messages.MESSAGE_DEVIBA.length + Messages.MESSAGE_DEVIBA_IMAGE.length;
+      let text = [...Messages.MESSAGE_DEVIBA];
+      for (let i = 0; i < Messages.MESSAGE_DEVIBA_IMAGE.length; i++) {
+        text.push(Messages.MESSAGE_DEVIBA_IMAGE[i]);
+      }
+      sendMsg(message.channel.id, Utils.decideMessage(max, min, text));
+      return;
+    }
+
     sendMsg(message.channel.id, Utils.decideMessage(max, min, Messages.MESSAGE_DEVIBA));
     return;
   }
   
   // 旦那さん
   if (message.content.match(/だんな|旦那|おっさん/)){
-    let max = 11;
+    let max = Messages.MESSAGE_DANNA_1.length;
     let min = 1;
     sendMsg(message.channel.id, Utils.decideMessage(max, min, Messages.MESSAGE_DANNA_1));
     sendMsg(Constants.CHAT_CHANNEL_SONOTA, Utils.decideMessage(max, min, Messages.MESSAGE_DANNA_2));
@@ -105,19 +141,53 @@ client.on('message', message =>{
   
   // ねこさん
   if (message.content.match(/ねこ|猫|ぬこ/)){
-    let max = 13;
+    let imageFlag = Constants.IMAGE_ON;
+    let max = Messages.MESSAGE_NEKOSUTEMI.length;
     let min = 1;
+
+    if (imageFlag === Constants.IMAGE_ON) {
+      max = Messages.MESSAGE_NEKOSUTEMI.length + Messages.MESSAGE_NEKOSUTEMI_IMAGE.length;
+      let text = [...Messages.MESSAGE_NEKOSUTEMI];
+      for (let i = 0; i < Messages.MESSAGE_NEKOSUTEMI_IMAGE.length; i++) {
+        text.push(Messages.MESSAGE_NEKOSUTEMI_IMAGE[i]);
+      }
+      sendMsg(message.channel.id, Utils.decideMessage(max, min, text));
+      return;
+    }
+
     sendMsg(message.channel.id, Utils.decideMessage(max, min, Messages.MESSAGE_NEKOSUTEMI));
     return;
   }
   
   // メロンさん
   if (message.content.match(/めろん|メロン|MELON/)){
-    let max = 12;
+    let imageFlag = Constants.IMAGE_ON;
+    let max = Messages.MESSAGE_MELON.length;
     let min = 1;
-    let text = Utils.decideMessage(max, min, Messages.MESSAGE_MELON);
+    let text = [...Messages.MESSAGE_MELON];
 
-    if (text === 'さいころ') {
+    if (imageFlag === Constants.IMAGE_ON) {
+      max = Messages.MESSAGE_MELON.length + Messages.MESSAGE_MELON_IMAGE.length;
+      for (let i = 0; i < Messages.MESSAGE_MELON_IMAGE.length; i++) {
+        text.push(Messages.MESSAGE_MELON_IMAGE[i]);
+      }
+
+      let tmp = Utils.decideMessage(max, min, text);
+      if (tmp === 'さいころ') {
+        let rnd = Math.floor( Math.random() * (5 + 1 - 1) ) + 1;
+        sendMsg(message.channel.id, `さいころ！${rnd}の目がでたよ！`);
+        for (let i = 0; i < rnd; i++){
+          sendMsg(message.channel.id, `<@!${Constants.ID_MELON}><@!${Constants.ID_MELON}><@!${Constants.ID_MELON}>`);
+        }
+        return;
+      }
+
+      sendMsg(message.channel.id, tmp);
+      return;
+    }
+
+    let tmp = Utils.decideMessage(max, min, Messages.MESSAGE_MELON);
+    if (tmp === 'さいころ') {
       let rnd = Math.floor( Math.random() * (5 + 1 - 1) ) + 1;
       sendMsg(message.channel.id, `さいころ！${rnd}の目がでたよ！`);
       for (let i = 0; i < rnd; i++){
@@ -126,13 +196,13 @@ client.on('message', message =>{
       return;
     }
 
-    sendMsg(message.channel.id, text);
+    sendMsg(message.channel.id, tmp);
     return;
   }
 
   // kuraharaさん
   if (message.content.match(/くらはら|藏原|kurahara/)){
-    let max = 9;
+    let max = Messages.MESSAGE_KURAHARA.length;
     let min = 1;
     sendMsg(message.channel.id, Utils.decideMessage(max, min, Messages.MESSAGE_KURAHARA));
     return;
@@ -140,26 +210,59 @@ client.on('message', message =>{
 
   // アル中
   if (message.content.match(/アル中/)){
-    let max = 10;
+    let imageFlag = Constants.IMAGE_ON;
+    let max = Messages.MESSAGE_ARUTYU.length;
     let min = 1;
-    let text = Utils.decideMessage(max, min, Messages.MESSAGE_ARUTYU);
+    let text = [...Messages.MESSAGE_ARUTYU];
 
-    if (text === '入隊まで残り日♪') {
+    if (imageFlag === Constants.IMAGE_ON) {
+      max = Messages.MESSAGE_ARUTYU.length + Messages.MESSAGE_ARUTYU_IMAGE.length;
+      for (let i = 0; i < Messages.MESSAGE_ARUTYU_IMAGE.length; i++) {
+        text.push(Messages.MESSAGE_ARUTYU_IMAGE[i]);
+      }
+
+      let tmp = Utils.decideMessage(max, min, text);
+      if (tmp === '入隊まで残り日♪') {
+        let now = new Date();
+        let future = new Date(2021, 11, 30);
+        let diff = (future.getTime() - now.getTime()) / 1000;
+        let days = Math.floor(diff / (24 * 60 * 60));
+        tmp = `入隊まで残り${days}日♪`;
+      }
+
+      sendMsg(message.channel.id, tmp);
+      return;
+    }
+
+    let tmp = Utils.decideMessage(max, min, Messages.MESSAGE_ARUTYU);
+    if (tmp === '入隊まで残り日♪') {
       let now = new Date();
       let future = new Date(2021, 11, 30);
       let diff = (future.getTime() - now.getTime()) / 1000;
       let days = Math.floor(diff / (24 * 60 * 60));
-      text = `入隊まで残り${days}日♪`;
+      tmp = `入隊まで残り${days}日♪`;
     }
 
-    sendMsg(message.channel.id, text);
+    sendMsg(message.channel.id, tmp);
     return;
   }
   
   // kuzu
   if (message.content.match(/くず|かず|カズ/)){
-    let max = 12;
+    let imageFlag = Constants.IMAGE_ON;
+    let max = Messages.MESSAGE_KUZU.length;
     let min = 1;
+
+    if (imageFlag === Constants.IMAGE_ON) {
+      max = Messages.MESSAGE_KUZU.length + Messages.MESSAGE_KUZU_IMAGE.length;
+      let text = [...Messages.MESSAGE_KUZU];
+      for (let i = 0; i < Messages.MESSAGE_KUZU_IMAGE.length; i++) {
+        text.push(Messages.MESSAGE_KUZU_IMAGE[i]);
+      }
+      sendMsg(message.channel.id, Utils.decideMessage(max, min, text));
+      return;
+    }
+
     sendMsg(message.channel.id, Utils.decideMessage(max, min, Messages.MESSAGE_KUZU));
     return;
   }

@@ -285,7 +285,7 @@ bot.on("voiceChannelLeave", (member, oldChannel) => {
     name = member.nick;
   }
 
-  bot.createMessage(Constants.CHAT_CHANNEL_ZATSUDAN, Utils.decideMessage(Messages.MESSAGE_VOICE_CHANNEL_LEAVE));
+  bot.createMessage(Constants.CHAT_CHANNEL_ZATSUDAN, Utils.decideMessage(max, min, Messages.MESSAGE_VOICE_CHANNEL_LEAVE));
 });
 
 bot.on("voiceChannelSwitch", (member, newChannel, oldChannel) => {

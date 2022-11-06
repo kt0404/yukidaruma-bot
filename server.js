@@ -70,6 +70,16 @@ client.on('message', message =>{
     return;
   }
   
+  //おみくじ
+  if (message.content.match(/おみくじ/)){
+    let imageFlag = Constants.IMAGE_ON;
+    let max = Messages.MESSAGE_OMIKUJI.length;
+    let min = 1;
+
+    sendMsg(message.channel.id, Utils.decideMessage(max, min, Messages.MESSAGE_OMIKUJI));
+    return;
+  }
+  
   // ゆきだるまさん
   if(message.isMemberMentioned(client.user) || message.content.match(/ゆきだ|だるま/)){
     let imageFlag = Constants.IMAGE_ON;

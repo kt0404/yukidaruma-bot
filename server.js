@@ -380,11 +380,36 @@ client.on('message', message => {
     }
     return;
   }
+
   if (message.content.match(/プール/)) {
     sendMsg(message.channel.id, 'プールきもちいー:hugging:');
     return;
   }
 
+  if (message.content.match(/ニャオハ/)) {
+    sendMsg(message.channel.id, 'にゃおは～:tired_face: :point_right:');
+    return;
+  }
+
+  if (message.content.match(/ジム/)) {
+    sendMsg(message.channel.id, '今日は～～～～！？');
+    let rnd = Math.floor(Math.random() * 4) + 1;
+    if (rnd === 1) {
+      sendMsg(message.channel.id, '\nラーメンの日:hugging:');
+    } else {
+      sendMsg(message.channel.id, '\nジムの日:frowning2:');
+    }
+    return;
+  }
+
+  if (message.content.match(/ラーメン/)) {
+    if (message.author.id === Constants.ID_MELON) {
+      sendMsg(message.channel.id, 'ジム行かなくていいんですか？');
+    } else {
+      sendMsg(message.channel.id, 'ラーメン画像まだですか？');
+    }
+    return;
+  }
 });
 
 bot.on("voiceChannelJoin", (member, newChannel) => {

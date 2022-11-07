@@ -364,6 +364,24 @@ client.on('message', message =>{
   
   if (message.content.match(/ふろ|風呂/)){
     sendMsg(message.channel.id, 'お風呂きもちいー:hugging:');
+    for (let i = 0; i < 10; i++) {
+      let j = Math.floor( Math.random() * 12 ) + 1;
+      if(j === 1){
+        sendMsg(message.channel.id, 'お風呂きもちー:hugging:');
+      }else if(j === 2){
+        sendMsg(message.channel.id, 'ラーメンきもちー:hugging:');
+      }else if(j === 3){
+        sendMsg(message.channel.id, 'お風呂つめたいー:sob:');
+      }else if(j <= 7){
+        sendMsg(message.channel.id, 'お風呂きもちいー:hugging:');
+      }else{
+        break;
+      }
+    }
+    return;
+  }
+  if (message.content.match(/プール/)){
+    sendMsg(message.channel.id, 'プールきもちいー:hugging:');
     return;
   }
   

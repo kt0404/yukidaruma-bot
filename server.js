@@ -277,6 +277,15 @@ client.on('message', message => {
     return;
   }
 
+  //マリス
+  if (message.content.match(/マリス|maris/i)) {
+    let max = Messages.MESSAGE_MARIS.length;
+    let min = 1;
+    sendMsg(message.channel.id, Utils.decideMessage(max, min, Messages.MESSAGE_MARIS));
+    return;
+  }
+
+
   if (message.content.match(/殺す|ころす/)) {
     let max = 3;
     let min = 1;
